@@ -9,9 +9,6 @@ asterisk_symbols_to_print = MAX
 
 # Print the number of asterisk symbols on the column of each row.
 for row in range(MAX):
-    for col in range(asterisk_symbols_to_print):
+    for col in range(asterisk_symbols_to_print - row):
       print(ASTERISK_SYMBOL, end='')
-
-    # Decrease the max number of asterisk symbols to print by 1 before the next row
-    asterisk_symbols_to_print -= 1
     print("")

@@ -1,0 +1,3 @@
+Brief Reflection
+
+From my experience during this assignment, I would say I did well and didn't seem that difficult. I would say a challenge sometimes would be knowing what code to put inside a function. It's good to also good to know what code so go inside each function so that way it can help keep code organized and knowing where to find certain sections of the source code. 

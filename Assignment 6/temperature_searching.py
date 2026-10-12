@@ -29,7 +29,7 @@ def get_celsius():
 
     # Input Celsius degree value between 0 and 50
     while (input_celsius_degree_value := float(input(f"Enter a Celsius degree ({MIN_CELSIUS}-{MAX_CELSIUS}): "))) < MIN_CELSIUS or input_celsius_degree_value > MAX_CELSIUS: 
-        print("Invalid: Temperature value must be greater than absolute zero.")
+        print(f"Invalid input. Please enter a temperature between {MIN_CELSIUS} and {MAX_CELSIUS}.")
 
     return input_celsius_degree_value
     pass
@@ -57,10 +57,8 @@ def find_match_whileloop(celsius):
         line = infile.readline()
         while line != '':
             degree_text, fahrenheit_text = line.split("\t\t")
-
             if int(degree_text) == celsius:
                 fahrenheit = float(fahrenheit_text)
-
             line = infile.readline()
         
     return fahrenheit

@@ -20,8 +20,8 @@ def get_celsius():
     #TODO - get the user's input celsius value (0-50) and validate it until a good value received
     
     # Input Celsius degree value between 0 and 50
-    while (input_celsius_degree_value := float(input("Enter a Celsius degree (0-50): "))) < MIN_CELSIUS or input_celsius_degree_value > 50: 
-        print("Invalid: Temperature value must be greater than absolute zero.")
+    while (input_celsius_degree_value := float(input("Enter a Celsius degree (0-50): "))) < MIN_CELSIUS or input_celsius_degree_value > MAX_CELSIUS: 
+        print(f"Invalid input. Please enter a temperature between {MIN_CELSIUS} and {MAX_CELSIUS}.")
 
     return input_celsius_degree_value;
     pass
@@ -34,7 +34,6 @@ def write_temperature_file_forloop(celsius):
     with open(FORLOOP_FILE, "w") as outfile:
         outfile.write(f'{"Celsius":>8}\t\t{"Fahrenheit":>8}\n')
         outfile.write("------------------------------------\n")
-        degree = 3
         for degree in range(int(celsius) + 1):
             fahrenheit = (degree * 1.8) + 32
             outfile.write(f"{degree:>8}\t\t{fahrenheit:>8.2f}\n")

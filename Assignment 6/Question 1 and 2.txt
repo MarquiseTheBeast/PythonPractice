@@ -1,0 +1,5 @@
+[Question 1] Compare two different types of loops, and explain which loop is more suitable in this context and why.
+Response: If I were to compare the two different types of loops, I would go with for loop. With the for loop, it would be more simple to work especially when wanting to start from the first number element 0 up to the max input degree. 
+
+[Question 2] Compare the while-loop and for-loop and identify which one is better in this context.
+Response: I would say the for loop is the better choice because it will automatically read the next line in the text file after executing every iteration of the loop until the next line is empty, basically like repeating the block of inside code up to a max number of times. The while loop will repeatedly execute the code inside the block until the next line is read as empty, which also requires using the 'infile.readline()' in the loop to read the next text file line or else the while loop will be stuck in an infinite loop on the same line. 

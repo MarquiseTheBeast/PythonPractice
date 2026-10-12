@@ -1,3 +1,0 @@
-Question 1: If I were to compare the two different types of loops, I would go with for loop. With the for loop, it would be more simple to work. 
-
-Question 2: I would say the for loop is better because it will automatically go to the next line in the text file, while the for loop would require using infile.readline() to read the next text file line.

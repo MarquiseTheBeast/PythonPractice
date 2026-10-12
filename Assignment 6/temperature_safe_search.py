@@ -3,7 +3,7 @@ from pathlib import Path
 MIN_CELSIUS = 0
 MAX_CELSIUS = 50
 
-TEMPERATURE_FILE = Path(__file__).resolve().parent / "temperature_forloop2.txt"
+TEMPERATURE_FILE = Path(__file__).resolve().parent / "temperature_forloop.txt"
 
 
 def main():
@@ -34,7 +34,7 @@ def get_celsius():
             else:
                 good_value_received = True
         except ValueError:     # Detects invalid input that isn't an int
-            print(f"Invalid input '{float(celsius_text)}' is not a whole number.")
+            print(f"Invalid input. '{float(celsius_text)}' is not a whole number.")
          #TODO - end here
 
     return celsius

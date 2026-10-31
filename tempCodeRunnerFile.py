@@ -1,0 +1,3 @@
+    print(my_list[1:])
+    print(my_list[:2])
+    print(my_list[-1])

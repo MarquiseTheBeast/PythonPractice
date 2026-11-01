@@ -20,12 +20,12 @@ def main():
     # TODO - Use try/except to handle a missing file and any other
     #        errors that can occur while reading or processing it.
     """
-
     # Empty student list and weighted grades to store values
     student_list = []
     weighted_grade_list = []
 
     try:
+        # Open the grades CSV file.
         with open(GRADES_FILE, 'r') as grades:
             # Skipping the header row and starting on the row of the first student.
             line = grades.readline()
@@ -39,7 +39,7 @@ def main():
         # Once finished with the CSV file, calculate each student's average grades and weighted grades.
         for i in range(len(student_list)):
             # Getting each student's average scores of the test, exam, discussion, and project.
-            test_avg_score, exam_avg_score, discussion_avg_score, project_avg_score = process_row(student_list[i][2:])    # The [2:] is used to bypass the name and studentID
+            test_avg_score, exam_avg_score, discussion_avg_score, project_avg_score = process_row(student_list[i][2:])    # The [2:] is used to bypass the student name and student ID.
   
             # Calculating the weighted final score before adding the score to weighted grade list.
             weight_final_grade = weight_final(test_avg_score, exam_avg_score, discussion_avg_score, project_avg_score)
@@ -47,47 +47,58 @@ def main():
 
         # Calculating the average of the scores by adding all the students' weighted grades together.
         average_scores = average_subject(weighted_grade_list)
-        print(f"The average of the {len(weighted_grade_list)} scores is: {average_scores}")
+        print(f"The average of the {len(weighted_grade_list)} scores is: {average_scores:.2f}")
 
         # Calculating how many students fall into each grade range.
         analyze_grade(weighted_grade_list)
+        
     except FileNotFoundError as file_error:
         print(file_error)
+    except TypeError as err:
+        print(f"Error: {err}")
 
 def process_row(row):
     """Given one row from the grades file, return that student's
     weighted final grade (bypass the Name and StudentID columns)."""
     # TODO - Implement this function.
 
-    # Constant variables inside this function. Based on the CSV file, the total number of each subject of tests, exams, and discussions.
+    # Constant variables inside this function. Based on the CSV file, the total number columns of tests, exams, and discussions.
     TOTAL_TEST_SCORES = 4
-    TOTAL_EXAMS_SCORES = 2
+    TOTAL_EXAM_SCORES = 2
     TOTAL_DISCUSSION_SCORES = 2
 
-    # Used to keep calculation of the average grade scores
-    test_average_score = 0
-    exam_average_score = 0
-    discussion_average_score = 0
-    
-    # Calculating the test grade average
-    for i in range(0, len(row) - (TOTAL_TEST_SCORES + 1)):
-        test_average_score += (float(row[i]) * TEST_WEIGHT)
-    test_average_score /= TOTAL_TEST_SCORES
+    # Calculating the test grade average.
+    # The 'i' variable will be used inside slicing string for starting point and ending point.
+    i = TOTAL_TEST_SCORES
+    total_test = 0
+    for val in row[0:i]:  # Starting from the first test score column up to the last test score column using slicing string in loop.
+        # Converting test score value to float multiplied by the test weight value before adding to test total.
+        weighted_score = float(val) * TEST_WEIGHT
+        total_test += weighted_score
+    test_average_score = total_test / TOTAL_TEST_SCORES
 
-    # Calculating the exam grade average
-    for i in range(4, len(row) - (TOTAL_EXAMS_SCORES + 1)):
-        exam_average_score += (float(row[i]) * EXAM_WEIGHT)
-    exam_average_score /= TOTAL_EXAMS_SCORES
+    # Calculating the exam grade average.
+    total_exam = 0
+    for val in row[i:(i + TOTAL_EXAM_SCORES)]:   # [i:(i + TOTAL_EXAM_SCORES)] is used to get the two exam score values after the test score columns in CSV.
+        # Converting exam score value to float multiplied by the exam weight value before adding to exam total.
+        weighted_score = float(val) * EXAM_WEIGHT
+        total_exam += weighted_score
+    exam_average_score = total_exam / TOTAL_EXAM_SCORES
+    # Adding before the next loop
+    i += TOTAL_EXAM_SCORES
 
     # Calculating the discussion grade average
-    for i in range(6, len(row) - 1):
-        discussion_average_score += (float(row[i]) * DISCUSSION_WEIGHT)
-    discussion_average_score /= TOTAL_DISCUSSION_SCORES
+    total_discussion = 0
+    for val in row[i:(i + TOTAL_DISCUSSION_SCORES)]:  # [i:(i + TOTAL_DISCUSSION_SCORES)] is used to get the two discussion score values after the exam score columns in CSV.
+        # Converting discussion score value to float multiplied by the discussion weight value before adding to discussion total.
+        weighted_score = float(val) * DISCUSSION_WEIGHT
+        total_discussion += weighted_score
+    discussion_average_score = total_discussion / TOTAL_DISCUSSION_SCORES
 
     # Project weighted grade
     project_grade = float(row[-1]) * PROJECT_WEIGHT
 
-    # Return all the average scores
+    # Return all the weighted scores.
     return test_average_score, exam_average_score, discussion_average_score, project_grade
 
 def average_subject(subject_list):
@@ -123,15 +134,15 @@ def analyze_grade(weight_final_list):
     students_with_F_grade = 0
 
     # Check each grade
-    for grade in weight_final_list:
-        current_grade = grade * 100
-        if current_grade >= 90:
+    for weighted_grade in weight_final_list:
+        score = weighted_grade * 100
+        if score >= 90:
             students_with_A_grade += 1
-        elif current_grade >= 80 and grade < 90:
+        elif score >= 80 and weighted_grade < 90:
             studenst_with_B_grade += 1
-        elif current_grade >= 70 and grade < 80:
+        elif score >= 70 and weighted_grade < 80:
             students_with_C_grade += 1
-        elif current_grade >= 60 and grade < 70:
+        elif score >= 60 and weighted_grade < 70:
             students_with_D_grade += 1
         else:
             students_with_F_grade += 1

@@ -1,3 +1,6 @@
-    print(my_list[1:])
-    print(my_list[:2])
-    print(my_list[-1])
+h = 'hello'
+
+for i in h:
+    print(i)
+    if i.isalpha():
+        print("Yes")

@@ -9,26 +9,29 @@ This program asks the user to enter a password. It checks the password against t
 PASSWORD_LENGTH = 8     # Max length of the password
 
 def main():
-    valid_password = False
+    valid = False
 
     # Loop until password input is valid.
-    while not valid_password:
+    while not valid:
         # User is prompted to enter a password.
         password_input = input("Enter a password: ")
 
         # Check to make sure the password is valid.
         is_password_valid = True if (check_password_length(password_input) and check_for_letters_and_digits(password_input) and check_for_spaces_or_symbols(password_input)) else False
         if is_password_valid:
-            valid_password = True
+            valid = True
 
-        if not valid_password:
+        if not valid:
             print("Password is invalid.")
         else:
             print("Password is valid.")
 
 # Checks if the password length is long enough.
 def check_password_length(password):
-    if len(password) < PASSWORD_LENGTH:
+    # Grab length of password
+    password_length = len(password)
+
+    if password_length < PASSWORD_LENGTH:
         print(f"Password must be at least {PASSWORD_LENGTH} characters long.")
         return False
     return True
@@ -59,7 +62,7 @@ def check_for_letters_and_digits(password):
 def check_for_spaces_or_symbols(password):
     # Using isalnum() to make sure the password string is alphanumeric (containing only alphabetic letters and digits), which is also useful for returning false when any space or symbol is detected in the password string. 
     if not password.isalnum():
-        print("Password must not contain any spaces or symbols. Only letters and digits are allowed.")
+        print("Password must not contain any spaces or symbols. Password must contain at least one uppercase letter, one lowercase letter, and one digit.")
         return False
     return True
 

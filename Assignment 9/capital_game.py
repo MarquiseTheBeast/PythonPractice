@@ -18,25 +18,29 @@ def main():
         # Assign a random state name
         state_name_selection = random_state_selection()
 
-        # User is prompted to enter capital name of state, or to quit the game by inputting '0'. 
-        capital_name_input = input(f"What is the capital of {state_name_selection}? (or enter 0 to quit): ")
-
-        if capital_name_input != '0':
-            # Check to see if the input answer is correct.
-            is_answer_correct = check_if_answer_is_correct(capital_name_input, state_name_selection)
-            if is_answer_correct:
-                print("That is correct.")
-                total_correct_responses += 1
+        try:
+            # User is prompted to enter capital name of state, or to quit the game by inputting '0'. 
+            capital_name_input = input(f"What is the capital of {state_name_selection}? (or enter 0 to quit): ")
+    
+            if capital_name_input != '0':
+                # Check to see if the input answer is correct.
+                is_answer_correct = check_if_answer_is_correct(capital_name_input, state_name_selection)
+                if is_answer_correct:
+                    print("That is correct.")
+                    total_correct_responses += 1
+                else:
+                    print("That is incorrect.")
+                    total_incorrect_responses += 1
             else:
-                print("That is incorrect.")
-                total_incorrect_responses += 1
-        else:
-            # End the game and print the total number of correct/incorrect responses. 
-            game_running = False
-            correct_response_string = "correct responses" if total_correct_responses != 1 else "correct response"
-            incorrect_response_string = "incorrect responses" if total_incorrect_responses != 1 else "incorrect response"
-            print(f"You had {total_correct_responses} {correct_response_string} and {total_incorrect_responses} {incorrect_response_string}.")
-        
+                # End the game and print the total number of correct/incorrect responses. 
+                game_running = False
+                correct_response_string = "correct responses" if total_correct_responses != 1 else "correct response"
+                incorrect_response_string = "incorrect responses" if total_incorrect_responses != 1 else "incorrect response"
+                print(f"You had {total_correct_responses} {correct_response_string} and {total_incorrect_responses} {incorrect_response_string}.")
+        except:
+            # This is printed when the capital input string is detected as empty.
+            print("Error: Invaid input.")
+                
 # Selects a random state name from the dictionary to return.
 def random_state_selection():
     # Get the state dictionary and assign.
@@ -79,11 +83,10 @@ def fix_answer_string(answer_string):
 
         # The answer string is updated by the fixed string, alongside removing the whitespace at the end.
         answer_string = fixed_string[0:(len(fixed_string)-1)]
-    else:
-        # Before updating the answer string, check to make sure the single word has its first letter uppercase and the rest of the letters lowercase.
-        if not answer_words[0][0].isupper() or not answer_words[0][1:].islower():
-            fixed_string = answer_words[0][0].upper() + answer_words[0][1:].lower()
-            answer_string = fixed_string
+    # Check to make sure the single word has its first letter uppercase and the rest of the letters lowercase.
+    elif not answer_words[0][0].isupper() or not answer_words[0][1:].islower(): 
+        fixed_string = answer_words[0][0].upper() + answer_words[0][1:].lower()
+        answer_string = fixed_string
 
     return answer_string
 

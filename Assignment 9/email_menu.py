@@ -21,7 +21,6 @@ def main():
 
     # Load dictionary contents from file and store in dictionary variable. 
     emails = load_emails()
-    print("size:", len(emails))
 
     # Program continues running until user exits. 
     program_running = True

@@ -4,8 +4,8 @@ def main():
     practice_1()
 
 def practice_1():
-    d1 = {'a': 1, 'b': 2}
-    print(len(d1))
+    intt = 082
+    print(str(intt))
 def practice_2():
     l = []
     l2 = [2,4,5,6,10,12]

@@ -54,26 +54,20 @@ def create_procedure():
 
 def main():
     patient = create_patient()
-
     procedures = []
-    # print("\nAdd one or more procedures (enter 'n' to stop).")
-    # TODO - create a loop to allow a user adding 0 to multiple procedures for the patient
-    #        use create_procedure() to instantiate each procedure object
 
-    # Loop until finished.
+    # Loop until finished adding procedures.
     is_finished = False
+    print()
     while not is_finished:
-        # Enter input choosing to add procedure or to stop.
-        input_string = input("Add procedure? (0 to add, enter 'n' to stop): ")
+        # If input is 'n', end the loop. Otherwise, just add new procedure.
+        input_string = input("Add one or more procedures (enter 'n' to stop): ")
         
-        if input_string == '0': 
-            # Create new procedure and add to list.
-            new_procedure = create_procedure()
-            procedures.append(new_procedure)
-        elif input_string == 'n':
+        if input_string.lower() == 'n':
             is_finished = True  
         else: 
-            print("Error: Try again. Either type '0' to add procedure or 'n' to stop.")
+            new_procedure = create_procedure()
+            procedures.append(new_procedure)
 
     # Printing the patient and procedure information.
     print("\nPatient and Procedure Information:")

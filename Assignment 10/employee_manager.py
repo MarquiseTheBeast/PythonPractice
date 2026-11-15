@@ -15,7 +15,7 @@ FILENAME = os.path.join(SCRIPT_DIR, 'employee.dat')
 
 # Display menu of choices.
 def display_menu():
-    print("Menu\n============================================")
+    print("\nMenu\n============================================")
     print("1. Look up an employee\n2. Add a new employee\n3. Change an existing employee\n4. Delete an employee\n5. Exit the program")
 
 # Load employees from file.
@@ -126,7 +126,6 @@ def main():
     # Loop until user exits.
     is_finished = False
     while not is_finished:
-        print("\nSize:", len(employees_list))
         try:
             # Display selection menu.
             display_menu()

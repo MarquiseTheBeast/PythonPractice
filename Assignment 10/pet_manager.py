@@ -8,7 +8,7 @@ def main():
 
     # Printing the pet's name, animal type, and age.
     print("\nHere is the data that you entered:")
-    new_pet = Pet(pet_name, pet_age, pet_type)
+    new_pet = Pet(pet_name, pet_type, pet_age)
     print(new_pet)
 
 if __name__ == '__main__':

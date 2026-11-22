@@ -88,7 +88,7 @@ def main():
 
             # Print commission breakdown if employee is a commission employee. 
             if emp.get_employee_type() == COMMISSION_EMPLOYEE_STR:
-                print(emp.get_commission_breakdown())
+                emp.commission_breakdown()
 
             # Add employee's salary to total payroll.
             total_payroll += emp.get_salary()

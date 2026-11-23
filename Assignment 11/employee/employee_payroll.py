@@ -63,7 +63,6 @@ def load_employees():
     # Return employee list.
     return employees
 
-
 def main():
     employees = load_employees()
     employee_dict = {}
@@ -86,8 +85,8 @@ def main():
         for emp in emp_list:
             print(f"    {emp.get_name()} ({emp.get_employee_type()}): ${emp.get_salary():.2f}")
 
-            # Print commission breakdown if employee is a commission employee. 
-            if emp.get_employee_type() == COMMISSION_EMPLOYEE_STR:
+            # Detect if employee is a commission employee. 
+            if isinstance(emp, Commission_Employee):
                 emp.commission_breakdown()
 
             # Add employee's salary to total payroll.
@@ -95,7 +94,6 @@ def main():
 
         # Printing total payroll.
         print(f"Total Payroll: ${total_payroll:.2f}\n")
-
 
 if __name__ == "__main__":
     main()

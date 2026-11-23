@@ -8,6 +8,12 @@ class Commission_Employee(Employee):
 
     # Commission breakdown with percentage of earnings.
     def commission_breakdown(self):
+        # Calculate commission value.
         commission = self.get_salary() - self.__base_pay
+
+        # Calculate earnings value.
         earnings = (commission / self.get_salary()) * 100
-        print(f"\tBase ${self.__base_pay:.2f} + Commission ${commission:.2f} ({earnings:.1f}% of earnings)")
+
+        # Print string containing base pay, commission, and percentage of earnings. 
+        # {"":<8} is used for left alignment by 8.
+        print(f"{"":<8}Base ${self.__base_pay:.2f} + Commission ${commission:.2f} ({earnings:.1f}% of earnings)")

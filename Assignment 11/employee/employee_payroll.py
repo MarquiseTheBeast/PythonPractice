@@ -14,7 +14,7 @@ def load_employees():
     # Employees list.
     employees = []
 
-    # Employee dictionary with hardcoded employee names as the keys and the values being a list containing [employee, department, salary].
+    # Employee dictionary with hardcoded data of employee names as the keys and the values being a list containing [employee, department, salary].
     # A list containing commission employee will have a base pay value (in last element of that list) that will be used to calculate the commission.
     employees_dict = {
         'Nick DeFalco': [HOURLY_EMPLOYEE_STR, 'Sales', 52000],
@@ -57,8 +57,8 @@ def load_employees():
             employees.append(new_commission_employee)
         elif employee_type == EMPLOYEE_STR:
             # Create new hourly employee.
-            new_hourly_employee = Hourly_Employee(employee_name, employee_type, department, salary)
-            employees.append(new_hourly_employee)
+            new_employee = Employee(employee_name, employee_type, department, salary)
+            employees.append(new_employee)
 
     # Return employee list.
     return employees
@@ -80,10 +80,11 @@ def main():
         # Total payroll used for each department. Resets to 0 on each loop.
         total_payroll = 0
 
-        # Print each department that includes each employee's name, employee type, and salary.
         print(f"Department: {department}")
         for emp in emp_list:
-            print(f"    {emp.get_name()} ({emp.get_employee_type()}): ${emp.get_salary():.2f}")
+            # Print employee's name, employee type, and their salary.  
+            # {"":<4} used for left allignment by 4.
+            print(f"{"":<4}{emp.get_name()} ({emp.get_employee_type()}): ${emp.get_salary():.2f}")
 
             # Detect if employee is a commission employee. 
             if isinstance(emp, Commission_Employee):

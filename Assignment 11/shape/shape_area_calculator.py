@@ -8,6 +8,8 @@ def main():
     shapes = [
         Rectangle("rect1", 4, 5),
         Circle("Circle", 3),
+        Rectangle("rect1", 4, 4),
+        Circle("Circle", 1.5),
         Square("Square", 4),
         Triangle("Triangle", 3, 4)
     ]

@@ -14,7 +14,7 @@ def load_employees():
     # Employees list.
     employees = []
 
-    # Employee dictionary with hardcoded employee names as the keys and the values being a list containing the type of employee, department, and salary.
+    # Employee dictionary with hardcoded employee names as the keys and the values being a list containing [employee, department, salary].
     # A list containing commission employee will have a base pay value (in last element of that list) that will be used to calculate the commission.
     employees_dict = {
         'Nick DeFalco': [HOURLY_EMPLOYEE_STR, 'Sales', 52000],
@@ -39,7 +39,7 @@ def load_employees():
         department = employees_dict[emp][1]
 
         # Assign salary.
-        salary = employees_dict[emp][-1] if employees_dict[emp][0] != COMMISSION_EMPLOYEE_STR else employees_dict[emp][-2] # Useful if employee is/isn't commission emplyee
+        salary = employees_dict[emp][-1] if employee_type != COMMISSION_EMPLOYEE_STR else employees_dict[emp][-2] # Useful if employee is or isn't commission emplyee
 
         # Check the type of employee.
         if employee_type == HOURLY_EMPLOYEE_STR:

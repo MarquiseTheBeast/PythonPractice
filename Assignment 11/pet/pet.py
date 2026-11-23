@@ -1,9 +1,13 @@
 # Pet class
 class Pet:
-    def __init__(self, name, species, sound):
+    def __init__(self, name):
         self.__name = name
-        self.__species = species
-        self.__sound = sound
+
+    def set_name(self, name):
+        self.__name = name
+
+    def get_name(self):
+        return self.__name
 
     def make_sound(self):
-        return f"{self.__name} the {self.__species} says {self.__sound}"
+        print(f"Regular animal says Grrrr!")

@@ -6,14 +6,6 @@ class Commission_Employee(Employee):
         Employee.__init__(self, name, employee_type, department, salary)
         self.__base_pay = base_pay
 
-    # Set base pay.
-    def set_base_pay(self, base_pay):
-        self.__base_pay = base_pay
-
-    # Return base pay.
-    def get_base_pay(self):
-        return self.__base_pay
-
     # Commission breakdown with percentage of earnings.
     def commission_breakdown(self):
         commission = self.get_salary() - self.__base_pay

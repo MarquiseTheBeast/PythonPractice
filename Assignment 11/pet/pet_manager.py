@@ -11,7 +11,6 @@ def print_menu():
     print("4. Show All Pets")
     print("5. Exit")
 
-
 def main():
     # List to store pets.
     pets = []
@@ -49,18 +48,17 @@ def main():
         elif choice == '4':
             # Check if list is empty before showing all pets.
             if len(pets) != 0:
+                print("\nYour Pets:")
                 for pet in pets:
-                    print(pet.make_sound())
+                    pet.make_sound()
                 print()
             else:
                 print("List is empty. Please add at least one pet.\n")
         elif choice == '5':
+            print("Goodbye!")
             break
         else:
             print("Invalid input. Try again.\n")
-
-       # TODO
-
 
 if __name__ == "__main__":
     main()

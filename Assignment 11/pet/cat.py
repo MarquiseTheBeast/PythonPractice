@@ -3,4 +3,7 @@ from pet import Pet
 # Cat class
 class Cat(Pet):
     def __init__(self, name):
-        Pet.__init__(self, name, 'Cat', 'Meow!')
+        Pet.__init__(self, name)
+
+    def make_sound(self):
+        print(f"{self.get_name()} the Cat says Meow!")

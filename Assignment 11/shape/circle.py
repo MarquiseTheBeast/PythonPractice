@@ -7,7 +7,7 @@ class Circle(Shape):
         Shape.__init__(self, shape)
         self.__radius = radius
     
-    # Return the area of square.
+    # Return the area of circle.
     def get_area(self):
         area = math.pi * self.__radius**2
         return area
